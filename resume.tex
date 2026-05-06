@@ -1,218 +1,204 @@
-%-------------------------
-% Resume in Latex
-% Author : Jake Gutierrez
-% Based off of: https://github.com/sb2nov/resume
-% License : MIT
-%------------------------
+% Suren Simonyan — Resume
+% Compile with: lualatex resume.tex
 
-\documentclass[letterpaper,11pt]{article}
+\documentclass[a4paper]{article}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
+\usepackage[
+  left=40.6pt,
+  right=40.6pt,
+  top=33.2pt,
+  bottom=25pt
+]{geometry}
+\usepackage{fontspec}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
+\usepackage{enumitem}
 \usepackage{tabularx}
-\input{glyphtounicode}
+\usepackage[protrusion=true,expansion=true]{microtype}
 
+\setmainfont{DejaVu Serif}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
 
-%----------FONT OPTIONS----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
+\definecolor{linkblue}{HTML}{0000EE}
+\definecolor{dategray}{gray}{0.35}
 
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
-
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
-
-\urlstyle{same}
-
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
-
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
-
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
-
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+\newcommand{\nameText}[1]{%
+  {\centering\fontsize{19pt}{20pt}\selectfont\bfseries #1\par}%
 }
 
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+\newcommand{\headlineText}[1]{%
+  {\centering\fontsize{10pt}{12pt}\selectfont\itshape\color{dategray} #1\par}%
 }
 
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+\newcommand{\contactText}[1]{%
+  {\centering\fontsize{8.5pt}{10.5pt}\selectfont #1\par}%
 }
 
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+\newcommand{\profileText}[1]{%
+  {\fontsize{8.5pt}{9.9pt}\selectfont #1\par}%
 }
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\newcommand{\firstSeperator}[1]{%
+  \vspace{0.4pt}%
+  \hrule height 1.5pt%
+  \vspace{7.0pt}%
+}
 
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\sectionTitle}[1]{%
+  \vspace{9pt}%
+  {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries #1\par}%
+  \vspace{3pt}%
+  \hrule height 0.5pt%
+  \vspace{7.84pt}%
+}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\linkedText}[2]{%
+  \href{#1}{\textcolor{linkblue}{\uline{#2}}}%
+}
 
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\skill}[2]{%
+  {\fontsize{8.5pt}{10.9pt}\selectfont\textbf{#1:} #2\par}%
+}
 
+\newcommand{\company}[2]{%
+	\begin{tabularx}{\textwidth}{@{}Xr@{}}
+		{\fontsize{9.5pt}{11.5pt}\selectfont\bfseries #1} &
+		{\fontsize{9pt}{11pt}\selectfont\color{dategray} #2} \\
+	\end{tabularx}%
+	\vspace{0pt}%
+}
+
+\newcommand{\jobProject}[1]{%
+  {\leftskip=6pt\fontsize{8.5pt}{10pt}\selectfont\bfseries #1\par}%
+  \vspace{1.7pt}%
+}
+
+\newcommand{\role}[1]{%
+  {\fontsize{9pt}{10.5pt}\selectfont\itshape\color{dategray} #1\par}%
+  \vspace{1.7pt}%
+}
+
+\newenvironment{dashBullets}{%
+  \begin{itemize}[
+    leftmargin=16.2pt,
+    label={\textendash},
+    itemsep=0.9pt,
+    topsep=0pt,
+    parsep=0pt,
+    partopsep=0pt
+  ]%
+  \fontsize{8.5pt}{9.9pt}\selectfont
+}{%
+  \end{itemize}%
+}
+
+\newcommand{\educationHeader}[2]{%
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    {\fontsize{9.5pt}{11.5pt}\selectfont\bfseries #1} &
+    {\fontsize{9pt}{11pt}\selectfont\color{dategray} #2} \\
+  \end{tabularx}%
+  \vspace{0pt}%
+}
 
 \begin{document}
 
-%----------HEADING----------
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
-%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
-% \end{tabular*}
+\nameText{SUREN SIMONYAN}
+\vspace{3.35pt}
+\headlineText{Senior Backend Engineer \,·\, Yerevan, Armenia \,·\, Open to Remote}
+\vspace{1.8pt}
+\contactText{simoniansuren@gmail.com \,|\, (+374) 33 033-730 \,|\, \linkedText{https://www.linkedin.com/in/suren-simonyan/}{LinkedIn} \,|\, \linkedText{https://github.com/SimonyanSuren}{GitHub}}
 
-\begin{center}
-    \textbf{\Huge \scshape Jake Ryan} \\ \vspace{1pt}
-    \small 123-456-7890 $|$ \href{mailto:x@x.com}{\underline{jake@su.edu}} $|$ 
-    \href{https://linkedin.com/in/...}{\underline{linkedin.com/in/jake}} $|$
-    \href{https://github.com/...}{\underline{github.com/jake}}
-\end{center}
+\vspace{15.72pt}
 
+\firstSeperator{}
 
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Southwestern University}{Georgetown, TX}
-      {Bachelor of Arts in Computer Science, Minor in Business}{Aug. 2018 -- May 2021}
-    \resumeSubheading
-      {Blinn College}{Bryan, TX}
-      {Associate's in Liberal Arts}{Aug. 2014 -- May 2018}
-  \resumeSubHeadingListEnd
+\sectionTitle{SUMMARY}
+\profileText{Backend engineer specializing in distributed systems where correctness under concurrency is critical. 
+Experience designing and building payment systems, settlement engines, and multi-tenant SaaS platforms with strong 
+guarantees against duplicate transactions and data inconsistencies. Background in medicine; transitioned to software engineering in 2021.}
 
+\sectionTitle{SKILLS}
+\skill{Languages \& Runtimes}{Node.js, TypeScript, JavaScript, C\#}
+\skill{Frameworks}{NestJS, Express.js, ASP.NET Core, ABP Framework}
+\skill{Databases \& ORMs}{PostgreSQL, MongoDB, Redis, MSSQL · TypeORM, Prisma, Drizzle, Entity Framework Core}                                              
+\skill{System Design \& Architecture}{Clean Architecture, DDD, Multi-tenancy, Microservices, Event-driven Architecture}
+\skill{Messaging \& Async Processing}{BullMQ, RabbitMQ, NATS}
+\skill{Cloud \& DevOps}{AWS, Azure, Docker, Kubernetes, CI/CD (GitHub Actions, GitLab CI)}
+\skill{Payment Systems}{NMI, Stripe, Authorize.net, idempotent transactions, settlement workflows}
+\skill{Observability \& Reliability}{Prometheus, Grafana, Pino}
+                                                      
+\sectionTitle{EXPERIENCE}
+\company{BitBreeze}{Mar. 2025 – Present}
+\role{Senior Backend Engineer}
 
-%-----------EXPERIENCE-----------
-\section{Experience}
-  \resumeSubHeadingListStart
+\jobProject{Paydan — Multi-tenant fintech SaaS platform}
+\begin{dashBullets}                                                                                                                                                                                          
+	\item Designed backend architecture from scratch (NestJS, TypeScript, PostgreSQL) using Clean Architecture,
+	DDD, and strict multi-tenant isolation with per-tenant configuration; serves 10 tenants(\textasciitilde100 users) in production (team of 6)                                                                                        
+	\item Developed payment processing module (NMI) with idempotent transaction handling; implemented
+	a strategy-pattern gateway abstraction to enable additional payment providers without core logic changes
+	\item Designed cross-domain workflows (appointment → checkout, estimate → checkout) coordinating multiple business entities
+	\item Introduced asynchronous processing with BullMQ and Redis, improving system reliability and fault tolerance
+	\item Integrated real-time transaction updates and notifications using WebSockets (Socket.IO)
+	\item Developed business logic for POS systems, inventory syncing, and reconciliation processes                                                                                                                
+	\end{dashBullets}
 
-    \resumeSubheading
-      {Undergraduate Research Assistant}{June 2020 -- Present}
-      {Texas A\&M University}{College Station, TX}
-      \resumeItemListStart
-        \resumeItem{Developed a REST API using FastAPI and PostgreSQL to store data from learning management systems}
-        \resumeItem{Developed a full-stack web application using Flask, React, PostgreSQL and Docker to analyze GitHub data}
-        \resumeItem{Explored ways to visualize GitHub collaboration in a classroom setting}
-      \resumeItemListEnd
-      
-% -----------Multiple Positions Heading-----------
-%    \resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \resumeItemListStart
-%        \resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \resumeItemListEnd
-%    \resumeSubHeadingListEnd
-%-------------------------------------------
+\vspace{4.0pt}
 
-    \resumeSubheading
-      {Information Technology Support Specialist}{Sep. 2018 -- Present}
-      {Southwestern University}{Georgetown, TX}
-      \resumeItemListStart
-        \resumeItem{Communicate with managers to set up campus computers used on campus}
-        \resumeItem{Assess and troubleshoot computer problems brought by students, faculty and staff}
-        \resumeItem{Maintain upkeep of computers, classroom equipment, and 200 printers across campus}
-    \resumeItemListEnd
+\jobProject{SitePlant — Construction-asset management SaaS platform (.NET/ABP Framework)}
+\begin{dashBullets}
+  \item Developed and maintained a 9-service microservices backend (team of 8) for asset tracking,
+  hire-management workflows, and real-time job‐site cost allocation across 15 tenants (\textasciitilde200 users)
+  \item Integrated third-party telematics (Flespi) and hire company data feeds (e.g., live hire reports, GPS/accelerometer trackers) to automate asset assignment and alerting
+  \item Designed and implemented secure RESTful APIs serving both web and mobile clients for equipment checkout, off-hire, and utilization reporting
+\end{dashBullets}
 
-    \resumeSubheading
-      {Artificial Intelligence Research Assistant}{May 2019 -- July 2019}
-      {Southwestern University}{Georgetown, TX}
-      \resumeItemListStart
-        \resumeItem{Explored methods to generate video game dungeons based off of \emph{The Legend of Zelda}}
-        \resumeItem{Developed a game in Java to test the generated dungeons}
-        \resumeItem{Contributed 50K+ lines of code to an established codebase via Git}
-        \resumeItem{Conducted  a human subject study to determine which video game dungeon generation technique is enjoyable}
-        \resumeItem{Wrote an 8-page paper and gave multiple presentations on-campus}
-        \resumeItem{Presented virtually to the World Conference on Computational Intelligence}
-      \resumeItemListEnd
+\vspace{5.07pt}
 
-  \resumeSubHeadingListEnd
+\company{SmartSoft}{Mar. 2023 – Mar. 2025}
+\role{Middle Node.js Developer}
+\jobProject{Sportsbook MVP — Real-time betting system}
+\begin{dashBullets}
+  \item Built a bet engine supporting single and parlay bets across multiple market types
+  \item Designed and implemented a settlement engine ensuring race-condition-safe payout processing
+  \item Built an idempotent payout pipeline using MongoDB change streams and BullMQ queues to prevent duplicate payouts
+\end{dashBullets}
 
+\vspace{4.0pt}
 
-%-----------PROJECTS-----------
-\section{Projects}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{Gitlytics} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{June 2020 -- Present}
-          \resumeItemListStart
-            \resumeItem{Developed a full-stack web application using with Flask serving a REST API with React as the frontend}
-            \resumeItem{Implemented GitHub OAuth to get data from user’s repositories}
-            \resumeItem{Visualized GitHub data to show collaboration}
-            \resumeItem{Used Celery and Redis for asynchronous tasks}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Simple Paintball} $|$ \emph{Spigot API, Java, Maven, TravisCI, Git}}{May 2018 -- May 2020}
-          \resumeItemListStart
-            \resumeItem{Developed a Minecraft server plugin to entertain kids during free time for a previous job}
-            \resumeItem{Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review}
-            \resumeItem{Implemented continuous delivery using TravisCI to build the plugin upon new a release}
-            \resumeItem{Collaborated with Minecraft server administrators to suggest features and get feedback about the plugin}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
+\jobProject{City Transport Ticketing System — IoT-integrated payments}
+\begin{dashBullets}
+  \item Designed and built the backend for a city transport payment system integrated with IoT terminals
+  \item Implemented idempotent transaction processing and retry-safe workflows to prevent duplicate charges
+  \item Developed support for NFC cards, QR payments, and debit/credit card processing
+\end{dashBullets}
 
+\vspace{5.07pt}
+\company{Smart Corner}{May 2022 – Mar. 2023}
+\role{Junior/Middle Node.js Developer}
+\begin{dashBullets}
+	\item Developed REST APIs and third-party integrations; delivered features across the full lifecycle: implementation, testing, and production release
+\end{dashBullets}
 
+\vspace{5.07pt}
+\company{Inomma}{Jan. 2022 – Apr. 2022}
+\role{Node.js Intern}
+\begin{dashBullets}
+  \item Built REST API endpoints, implemented JWT authentication and authorization, and designed PostgreSQL schemas
+\end{dashBullets}
 
-%
-%-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R} \\
-     \textbf{Frameworks}{: React, Node.js, Flask, JUnit, WordPress, Material-UI, FastAPI} \\
-     \textbf{Developer Tools}{: Git, Docker, TravisCI, Google Cloud Platform, VS Code, Visual Studio, PyCharm, IntelliJ, Eclipse} \\
-     \textbf{Libraries}{: pandas, NumPy, Matplotlib}
-    }}
- \end{itemize}
+\sectionTitle{EDUCATION}
+\educationHeader{Armenian Code Academy (ACA)}{2021 – 2022}
+{\fontsize{9pt}{10.5pt}\selectfont\itshape\color{dategray}JavaScript Development\par}%
+\vspace{4.0pt}%
+\educationHeader{Yerevan State Medical University (YSMU)}{2018 – 2021}
+{\fontsize{9pt}{10.5pt}\selectfont\itshape\color{dategray}Medical Residency\par}%
+\vspace{4.0pt}%
+\educationHeader{Yerevan State Medical University (YSMU)}{2009 – 2018}
+{\fontsize{9pt}{10.5pt}\selectfont\itshape\color{dategray}Master's Degree in Medicine\par}%
 
-
-%-------------------------------------------
 \end{document}
