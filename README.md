@@ -3,7 +3,7 @@
 Senior Backend Engineer · Yerevan, Armenia · Open to Remote
 
 <p align="left">
-  <a href="./Suren_Simonyan_Resume.pdf">
+  <a href="https://github.com/SimonyanSuren/resume/raw/main/Suren_Simonyan_Resume.pdf">
     <img alt="Download Resume PDF" src="https://img.shields.io/badge/Download-PDF-0A66C2?style=for-the-badge" width="170">
   </a>
 </p>
