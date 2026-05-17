@@ -1,26 +1,46 @@
 # Suren Simonyan — Resume
 
-Single-page backend engineer resume typeset in LaTeX (LuaLaTeX + fontspec).
+Senior Backend Engineer · Yerevan, Armenia · Open to Remote
 
-## Compile
+<p align="left">
+  <a href="./Suren_Simonyan_Resume.pdf">
+    <img alt="Download Resume PDF" src="https://img.shields.io/badge/Download-PDF-0A66C2?style=for-the-badge" width="170">
+  </a>
+</p>
+
+---
+
+## Contact
+
+- Email: [simoniansuren@gmail.com](mailto:simoniansuren@gmail.com)
+- LinkedIn: [linkedin.com/in/suren-simonyan](https://www.linkedin.com/in/suren-simonyan/)
+- GitHub: [github.com/SimonyanSuren](https://github.com/SimonyanSuren)
+
+---
+
+## About
+
+The PDF in this repo is the latest public version of my resume. The footer contains a version marker (e.g. `v2026.05.17`) linked back here — so you can always verify you have the current copy.
+
+---
+
+## Development
+
+The source is a custom LaTeX template compiled with LuaLaTeX.
 
 ```bash
-lualatex -jobname="Suren_Simonyan_Resume" resume.tex
+./build.sh
 ```
 
-Requires a LaTeX distribution with `fontspec`, `DejaVu Serif`, and standard packages (`geometry`, `enumitem`, `tabularx`, `microtype`, `hyperref`, `xcolor`, `ulem`).
-
-## Font
-
-Uses **DejaVu Serif** — install via your OS package manager if missing:
+**Requirements:** LuaLaTeX + DejaVu Serif font
 
 ```bash
 # Ubuntu / Debian
-sudo apt install fonts-dejavu
+sudo apt install texlive-luatex fonts-dejavu
 
 # Arch
-sudo pacman -S ttf-dejavu
+sudo pacman -S texlive-bin ttf-dejavu
 
 # macOS (Homebrew)
-brew install font-dejavu
+brew install --cask mactex && brew install font-dejavu
 ```

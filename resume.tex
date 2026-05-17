@@ -15,6 +15,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
 \usepackage{tabularx}
+\usepackage{eso-pic}
 \usepackage[protrusion=true,expansion=true]{microtype}
 
 \setmainfont{DejaVu Serif}
@@ -23,8 +24,23 @@
 \setlength{\parskip}{0pt}
 \setlength{\tabcolsep}{0pt}
 
+\InputIfFileExists{cv-version.tex}{}{%
+  \newcommand{\cvVersion}{v\the\year.\ifnum\month<10 0\fi\number\month.\ifnum\day<10 0\fi\number\day}%
+}
+
 \definecolor{linkblue}{HTML}{0000EE}
 \definecolor{dategray}{gray}{0.35}
+
+\AddToShipoutPictureFG{%
+  \AtPageLowerLeft{%
+    \raisebox{10pt}{%
+      \makebox[\paperwidth][c]{%
+        {\fontsize{6.8pt}{8pt}\selectfont\color{dategray}%
+        \href{https://github.com/SimonyanSuren/resume}{\cvVersion}}%
+      }%
+    }%
+  }%
+}
 
 \newcommand{\nameText}[1]{%
   {\centering\fontsize{19pt}{20pt}\selectfont\bfseries #1\par}%
